@@ -106,9 +106,10 @@ var SsmFetch = function () {
 
             // Triggers the `getParameter`request to AWS.SSM
             ssmClient.getParameter(params, function (err, data) {
-              log.info('> serverless-ssm-fetch: Fetching "' + parameter + ': ' + ssmParameters[parameter] + '"...');
+              // log.info('> serverless-ssm-fetch: Fetching "' + parameter + ': ' + ssmParameters[parameter] + '"...');
+              log.info('> serverless-ssm-fetch: Fetching parameter "' + parameter + '" with success.');
               if (err) {
-                log.error('> serverless-ssm-fetch: ' + err);
+                log.error('> serverless-ssm-fetch: Fetching parameter ERROR - "' + err + '"');
                 reject(err);
               } else {
                 self.serverless.serverlessSsmFetch[parameter] = data.Parameter.Value;
